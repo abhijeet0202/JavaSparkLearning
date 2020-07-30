@@ -49,7 +49,7 @@ public class BasicRDD {
 	}
 	
 	JavaRDD<Integer> basicTransformationAction(){
-		JavaRDD<String> stringData = sc.textFile("C:\\Abhijeet\\Data.txt");
+		JavaRDD<String> stringData = sc.textFile("C:\\Abhijeet\\Learning\\JavaSparkLearning\\Data.txt");
 		//Example of transformation i.e. map(), which basically taking 
 		// per String List <JavaRDD> and counts its length and save it to map
 		JavaRDD<Integer> lineLengths = stringData.map(sD -> sD.length());
@@ -57,7 +57,7 @@ public class BasicRDD {
 		// Above line prints the size of each list items, NOW if I want to print lineLength
 		// again from calling function or outside this function, exactly what i did in Junit code
 		// i returned the lineLength. It will not print the values, because SCOPE will lost.
-		// To make the SCOPE present, we need to wite below Line StorageLevel.MEMORY_ONLY()
+		// To make the SCOPE present, we need to write below Line StorageLevel.MEMORY_ONLY()
 		// try to remove it and print it
 		lineLengths.persist(StorageLevel.MEMORY_ONLY());
 		int totalLength = lineLengths.reduce((a,b)-> a+b);
